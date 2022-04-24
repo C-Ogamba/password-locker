@@ -30,5 +30,8 @@ class Credential:
             if account_credentials.accountname == accountname:
                 return account_credentials
 
-               
+    @classmethod
+    def display_credentials(cls):
+        """method that shows the credentials"""
+        return cls.passwords           
         
