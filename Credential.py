@@ -9,6 +9,7 @@ class Credential:
         self.accountname = accountname
         self.username = username
         self.password = password
+        
     def save_user_credentials(self):
         """saves users credentials """
         Credential.passwords.append(self)
