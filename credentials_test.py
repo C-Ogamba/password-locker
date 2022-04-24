@@ -55,7 +55,19 @@ class TestCredentials(unittest.TestCase):
         test_credential = Credential("twitter", "candy", "713288")
         test_credential.save_credential()
 
-        found_credential = Credential.find_by_user_name("mary")
+        found_credential = Credential.find_by_username("candy")
 
-        self.assertEqual(found_credential.user_name, test_credential.user_name)
+        self.assertEqual(found_credential.username, test_credential.username)
+    
+    def test_account_exists(self):
+        """test if the platform_exists method returns the correct value"""
+        self.new_credential.save_credential()
+        test_credential = Credential("twitter", "candy", "713288")
+        test_credential.save_credential()
+
+        credential_exists = Credential.account_exists("candy")
+
+        self.assertTrue(credential_exists)
+
+    
     
