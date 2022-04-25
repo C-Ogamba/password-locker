@@ -6,7 +6,7 @@ class TestCredentials(unittest.TestCase):
     def setUp(self):
         """setup method which will run before each test case"""
         self.new_credential = Credential("github", "cindy", "123456")
-        Credential.passwords = []
+        Credential.accountlist = []
 
     def test_init(self):
         '''
@@ -18,13 +18,13 @@ class TestCredentials(unittest.TestCase):
 
     def test_save_credential(self):
         """tests credentials save method if it appends to array"""
-        self.assertEqual(len(Credential.passwords), 0)
+        
         self.new_credential.save_credential()
-        self.assertEqual(len(Credential.passwords), 1)
+        self.assertEqual(len(Credential.accountlist), 1)
 
     def tearDown(self):
 
-        Credential.passwords = []
+        Credential.accountlist = []
 
     def test_save_multiple_credential(self):
         '''
@@ -32,19 +32,19 @@ class TestCredentials(unittest.TestCase):
         objects to our credential_list
         '''
         self.new_credential.save_credential()
-        test_credential = Credential(
-            "telegram", "mary", "989898")  # new credential
+        test_credential = Credential("twitter", "candy", "713288")  # new credential
         test_credential.save_credential()
-        self.assertEqual(len(Credential.passwords), 2)
 
-    def test_delete_account_credentials(self):
+        self.assertEqual(len(Credential.accountlist), 2)
+
+    def test_delete_account_credential(self):
         self.new_credential.save_credential()
-        self.assertEqual(len(Credential.passwords), 1)
         test_credential = Credential("twitter", "candy", "713288")
         test_credential.save_credential()
 
+
         self.new_credential.delete_credential()
-        self.assertEqual(len(Credential.passwords), 0)
+        self.assertEqual(len(Credential.accountlist), 1)
 
     def test_find_by_username(self):
         '''
@@ -73,7 +73,7 @@ class TestCredentials(unittest.TestCase):
         """test to see if it returns all the saved credentials"""
         self.new_credential.save_credential()
 
-        self.assertEqual(Credential.display_the_credentials(), Credential.passwords)
+        self.assertEqual(Credential.display_the_credentials(), Credential.accountlist)
 
 if __name__ == "__main__":
     unittest.main()
