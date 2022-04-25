@@ -10,25 +10,27 @@ class Credential:
         self.username = username
         self.password = password
         
-    def save_user_credentials(self):
+    def save_credential(self):
         """saves users credentials """
         Credential.accountlist.append(self)
 
-    def delete_user_credentials(self):
+    def delete_credential(self):
         """deletes users credentials"""
         Credential.accountlist.remove(self)
     
     @classmethod
-    def check_account_exists(cls, accountname):
+    def check_account_exists(cls, username):
         """this checks whether the account exists"""
         for account_credentials in cls.accountlist:
-            return True if account_credentials.accountname == accountname else False
-
+            if account_credentials.username == username:
+                return True
+            # return True if account_credentials.username == username else False
+        return False
     @classmethod
-    def find_user_name_credentials(cls, accountname):
-        """This is to find accountname credentials by user name"""
+    def find_by_username(cls, username):
+        """This is to find username credentials by user name"""
         for account_credentials in cls.accountlist:
-            if account_credentials.accountname == accountname:
+            if account_credentials.username == username:
                 return account_credentials
 
     @classmethod

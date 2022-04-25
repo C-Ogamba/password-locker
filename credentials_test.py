@@ -65,15 +65,15 @@ class TestCredentials(unittest.TestCase):
         test_credential = Credential("twitter", "candy", "713288")
         test_credential.save_credential()
 
-        credential_exists = Credential.account_exists("candy")
+        credential_exists = Credential.check_account_exists("candy")
 
         self.assertTrue(credential_exists)
 
-    def test_display_the_credentials(self):
+    def test_display_credentials(self):
         """test to see if it returns all the saved credentials"""
         self.new_credential.save_credential()
 
-        self.assertEqual(Credential.display_the_credentials(), Credential.accountlist)
+        self.assertEqual(Credential.display_credentials(), Credential.accountlist)
 
 if __name__ == "__main__":
     unittest.main()
