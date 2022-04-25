@@ -5,7 +5,7 @@ class TestCredentials(unittest.TestCase):
 
     def setUp(self):
         """setup method which will run before each test case"""
-        self.platform = Credential("github", "cindy", "123456")
+        self.new_credential = Credential("github", "cindy", "123456")
         Credential.passwords = []
 
     def test_init(self):
@@ -37,7 +37,7 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credential()
         self.assertEqual(len(Credential.passwords), 2)
 
-    def test_delete_platform_credentials(self):
+    def test_delete_account_credentials(self):
         self.new_credential.save_credential()
         self.assertEqual(len(Credential.passwords), 1)
         test_credential = Credential("twitter", "candy", "713288")
@@ -46,7 +46,7 @@ class TestCredentials(unittest.TestCase):
         self.new_credential.delete_credential()
         self.assertEqual(len(Credential.passwords), 0)
 
-    def test_find_by_user_name(self):
+    def test_find_by_username(self):
         '''
         test to check if we can find a user details by username and display information
         '''
