@@ -26,5 +26,19 @@ class User:
 
         return cls.user_accounts
 
- 
+    @classmethod
+    def find_by_account(cls, accounts):
+        """find account using accountname"""
+
+        for account in cls.user_accounts:
+            if account.account == accounts:
+                return account
+
+    @classmethod
+    def account_exists(cls, accounts):
+
+        for account in cls.user_accounts:
+            if account.account == accounts:
+                return account
+            return False
 
