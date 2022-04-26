@@ -7,7 +7,7 @@ class User:
         self.account = account
         self.password = password
         
-        user_accounts = []
+    user_accounts = []
 
     def delete_account(self):
         """function to delete account"""

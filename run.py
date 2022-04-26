@@ -54,7 +54,7 @@ def display_account():
     return User.display_account()
 
 def main():
-    print('Wlecome to your Password Locker')
+    print('Welcome to your Password Locker')
     print('Select action below to proceed')
     while True:
 
