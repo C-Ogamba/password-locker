@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.8
+import random
 from user import User
 from credential  import Credential
 
@@ -52,3 +53,108 @@ def del_account(accounts):
 def display_account():
     return User.display_account()
 
+def main():
+    print('Wlecome to your Password Locker')
+    print('Select action below to proceed')
+    while True:
+
+        print(" 1. LOGIN \n 2. SIGN UP  \n 3. DISPLAY ACCOUNTS \n 4. SIGN OUT")
+
+        selected = int(input())
+        if selected == 1:
+            print('Enter your account name')
+            name_account = input()
+            print('Enter your username')
+            username = input()
+            print('Enter your password')
+            password = input()
+            account = find_account(name_account)
+            if account:
+
+                if account.account == name_account and account.password == password:
+
+                    print('logged in ')
+                    while True:
+
+                        print(
+                            f'Welcome {username}, select action below using corresponding number')
+
+                        print(
+                            ' 1. Save new password \n 2. Delete password \n 3. Display saved password')
+
+                        selectOption = int(input())
+                        if selectOption == 1:
+                            print('New account')
+
+                            print('account name')
+                            account = input()
+
+                            print('1. Create password \n 2.Generate password')
+                            choice = int(input())
+                            if choice == 1:
+
+                                print('password')
+                                password = input()
+                            elif choice == 2:
+                                randoms = random.randint(1000,9999)
+                                print(randoms) 
+                                password = randoms
+
+                            else:
+                                print('Not an option')      
+
+                            save_accounts(create_account(account, password))
+
+                        elif selectOption == 2:
+                            print("Enter the name of the account you want to delete")
+
+                            account = input()
+                            if account_exist(account):
+                                # remove_account = (account)
+                                del_account(account_exist(account))
+
+                            else:
+                                print(f'{account} does not exist')
+
+                        elif selectOption == 3:
+                            if display_account():
+                                for acc in display_account():
+                                    print(
+                                        f'{acc.account}:{acc.password}'
+                                    )
+            else:
+                print('Does not exist')
+
+        if selected == 2:
+            print('Sign Up New acc')
+
+            print('Enter Account Name')
+            account_name = input()
+
+            print('Enter Username')
+            user_name = input()
+
+            print('Enter Password')
+            password = input()
+
+            save_accounts(create_account(
+                account_name, password))
+
+            print('Successful')
+
+        elif selected == 3:
+            if display_account():
+                for account in display_account():
+                    print(
+                        f'{account.account}'
+                    )
+            else:
+                print('Nothing Yet')
+
+        elif selected == 4:
+            print('Thank YOU')
+            break
+
+
+if __name__ == '__main__':
+    main()
