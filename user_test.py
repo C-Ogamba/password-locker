@@ -48,6 +48,12 @@ class Test(unittest.TestCase):
         self.assertEqual(found_account.account, test_pass.account)
 
     def account_exits(self):
+        """"""
+        self.new_password.save_accounts()
+        test_pass = User("github","654321")
+        test_pass.save_accounts()
+        account_exist = User.account_exists("twitter")
+        self.assertTrue(account_exist)
 
 
 if __name__ == '__main__':
