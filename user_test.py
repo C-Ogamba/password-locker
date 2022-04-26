@@ -26,4 +26,15 @@ class Test(unittest.TestCase):
         self.new_password.save_account()
         test_pass = User("github", "654321")
         test_pass.save_account()
-        self.assertEqual(len(User.user_passwords), 2)
+        self.assertEqual(len(User.user_accounts), 2)
+
+    def test_delete_account(self):
+        """check whether the delete function removes accounts"""
+
+        self.new_password.save_account()
+        test_pass = User("github", "654321")
+        test_pass.save_account()
+        self.assertEqual(len(User.user_accounts), 2)
+
+if __name__ == '__main__':
+    unittest.main()   
