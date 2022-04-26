@@ -4,7 +4,7 @@ from requests import delete
 class User:
     def __init__(self,account,password):
        
-        self.name = account
+        self.account = account
         self.password = password
         
         user_accounts = []

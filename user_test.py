@@ -18,6 +18,7 @@ class Test(unittest.TestCase):
 
     def test_save_account(self):
         """checks whether value is appended to the user' password"""
+        
         self.new_password.save_accounts()
         self.assertEqual(len(User.user_accounts), 1)
 
@@ -34,12 +35,14 @@ class Test(unittest.TestCase):
         self.new_password.save_accounts()
         test_pass = User("github", "654321")
         test_pass.save_accounts()
+
+        self.new_password.delete_account()
         self.assertEqual(len(User.user_accounts), 1)
 
     def test_display_account(self):
         self.assertEqual(User.display_account(), User.user_accounts)
 
-    def test_find_account(self):
+    def test_find_by_account(self):
         """test checks whether account password is saved"""
         self.new_password.save_accounts()
         test_pass = User("github", "654321")
